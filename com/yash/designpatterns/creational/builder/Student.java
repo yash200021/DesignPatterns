@@ -8,6 +8,8 @@ public class Student {
     private Integer age;
     private String gender;
 
+    //It is made private to not be able to create Student object directly, always
+    //use Builder class to create Student object
     private Student(Builder builder){
         this.rollNo = builder.getRollNo();
         this.name = builder.getName();
@@ -17,10 +19,12 @@ public class Student {
         this.gender = builder.getGender();
     }
 
+    //This method is made static to get builder object without creating student object
     public static Builder getBuilder(){
         return new Builder();
     }
 
+    //This inner class is made static in order to be called from static method getBuilder().
     static class Builder {
         private Integer rollNo;
         private String name;
